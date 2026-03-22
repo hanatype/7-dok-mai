@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Spring Hanami Quiz | ค้นหาดอกไม้ในใจคุณ</title>
+    <title>JBC Hanakotoba Quiz | ค้นหาดอกไม้ในใจคุณ</title>
     <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
     <style>
+        /* --- คงส่วน CSS เดิมของคุณไว้ทั้งหมด เพื่อรักษา UI และแอนิเมชัน --- */
         :root {
             --sky-blue: #e0f7fa; 
             --sakura-pink: #ffebee; 
@@ -16,7 +17,6 @@
         }
 
         body {
-            /* เปลี่ยนฟอนต์หลักเป็น Itim */
             font-family: 'Itim', cursive;
             background-color: var(--sky-blue);
             background-image: linear-gradient(180deg, var(--sky-blue) 0%, var(--sakura-pink) 100%);
@@ -30,7 +30,6 @@
             overflow-x: hidden; 
         }
 
-        /* --- CSS Animation กลีบซากุระร่วง --- */
         .cherry-blossom-container {
             position: fixed;
             top: 0;
@@ -49,16 +48,13 @@
             animation: fadeout 5s infinite, fall 10s infinite;
         }
 
-        @keyframes fadeout { 
-            0%, 100% { opacity: 0; } 
-            50% { opacity: 0.8; } 
-        }
-
+        @keyframes fadeout { 0%, 100% { opacity: 0; } 50% { opacity: 0.8; } }
         @keyframes fall {
             0% { top: -10%; transform: translateX(0px) rotate(0deg); }
             100% { top: 110%; transform: translateX(100px) rotate(360deg); }
         }
 
+        /* กลีบซากุระ 7 กลีบตามต้นฉบับ */
         .petal:nth-child(1) { width: 10px; height: 10px; left: 10%; animation-delay: 0s; }
         .petal:nth-child(2) { width: 15px; height: 15px; left: 20%; animation-delay: 2s; }
         .petal:nth-child(3) { width: 8px; height: 8px; left: 35%; animation-delay: 4s; }
@@ -67,7 +63,6 @@
         .petal:nth-child(6) { width: 10px; height: 10px; left: 80%; animation-delay: 5s; }
         .petal:nth-child(7) { width: 14px; height: 14px; left: 90%; animation-delay: 2.5s; }
 
-        /* --- Main Container --- */
         #quiz-container {
             background: var(--card-bg);
             padding: 30px;
@@ -81,7 +76,6 @@
             margin: 20px;
         }
 
-        /* --- Element Styles --- */
         h1 { font-size: 2em; margin-top: 10px; font-weight: 500;}
         h3 { font-size: 1.2em; line-height: 1.4; font-weight: 300;}
         p { font-size: 1em; line-height: 1.6; }
@@ -100,7 +94,6 @@
             font-size: 16px;
             font-weight: 500;
             box-sizing: border-box; 
-            /* กำหนดฟอนต์ให้กับปุ่มด้วย */
             font-family: 'Itim', cursive;
         }
 
@@ -110,15 +103,8 @@
             border-color: #bcaaa4;
         }
 
-        .btn-main {
-            background: var(--primary-btn);
-            color: white;
-            border: none;
-        }
-
-        .btn-main:hover {
-            background: #8d6e63;
-        }
+        .btn-main { background: var(--primary-btn); color: white; border: none; }
+        .btn-main:hover { background: #8d6e63; }
 
         img { 
             max-width: 100%; 
@@ -130,7 +116,6 @@
         }
 
         .hidden { display: none; }
-        
         .result-info { 
             text-align: left; 
             background: rgba(250, 248, 246, 0.8); 
@@ -139,21 +124,15 @@
             margin: 20px 0; 
             font-size: 14px;
         }
-        
         .progress { font-size: 12px; color: #a1887f; margin-bottom: 15px; }
-        
         hr { border: 0.5px solid #f1e0db; margin: 25px 0; }
     </style>
 </head>
 <body>
 
 <div class="cherry-blossom-container">
-    <div class="petal"></div>
-    <div class="petal"></div>
-    <div class="petal"></div>
-    <div class="petal"></div>
-    <div class="petal"></div>
-    <div class="petal"></div>
+    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+    <div class="petal"></div><div class="petal"></div><div class="petal"></div>
     <div class="petal"></div>
 </div>
 
@@ -180,8 +159,8 @@
             <p><strong>เกร็ดน่ารู้:</strong> <span id="flower-note"></span></p>
         </div>
         <hr>
-        <h3 style="font-weight: 500; font-size: 1.1em;">ลองพับดอกไม้ของคุณดูไหม? ✨</h3>
-        <a id="flower-video" href="#" target="_blank" class="btn btn-main" style="text-decoration: none;">ดูวิธีพับกระดาษ (Origami)</a>
+        <h3 style="font-weight: 500; font-size: 1.1em;">ลองทำดอกไม้ของคุณดูไหม? ✨</h3>
+        <a id="flower-video" href="#" target="_blank" class="btn btn-main" style="text-decoration: none;">ดูวิธีทำดอกไม้ด้วยตัวเอง</a>
         <button class="btn" onclick="location.reload()" style="font-size: 14px; border: none; color: #a1887f; background: none; font-family: 'Itim', cursive;">ทำแบบทดสอบใหม่</button>
     </div>
 </div>
@@ -197,16 +176,29 @@
         Tsubaki: { name: "สึบากิ (Camellia)", meaning: "ความงดงามที่เรียบง่าย และความสมบูรณ์แบบ", note: "ปรากฏในวรรณกรรมญี่ปุ่นมานานกว่าพันปี ปัจจุบันเป็นส่วนประกอบยอดนิยมในเครื่องสำอางญี่ปุ่น", img: "tsubaki.png", video: "https://www.youtube.com/watch?v=g1p58FSvsRY" }
     };
 
-    const questions = [
-        { q: "เมื่อคุณตื่นมาในเช้าวันหยุด สิ่งแรกที่คุณอยากทำคือ?", options: [{t:"ออกไปเดินเล่นหาของอร่อย", s:["Nanohana", "Gerbera"]}, {t:"นั่งจิบชาอ่านหนังสือเงียบๆ", s:["Tsubaki", "Nemophila"]}, {t:"ไปในที่ที่ไม่เคยไป", s:["Sakura", "Gerbera"]}] },
-        { q: "นิยาม 'ความสวยงาม' แบบที่คุณชอบที่สุดคือ?", options: [{t:"ความสวยที่เรียบง่าย ไม่ไม่ต้องแต่งเติม", s:["Tsubaki", "Nemophila"]}, {t:"ความงามที่มีความหมายลึกซึ้ง", s:["Sakura", "Hydrangea"]}, {t:"ความงามที่หรูหรา น่าหลงใหล", s:["Wisteria"]}] },
-        { q: "เมื่อเจออุปสรรค คุณมักจะรับมืออย่างไร?", options: [{t:"ให้อภัยตัวเองและผู้อื่น", s:["Nemophila", "Hydrangea"]}, {t:"มองหาความหวังและก้าวต่อ", s:["Gerbera", "Nanohana"]}, {t:"ยอมรับความเปลี่ยนแปลงของชีวิต", s:["Hydrangea", "Sakura"]}] },
-        { q: "ในงานสังสรรค์ คุณมักจะเป็นคนแบบไหน?", options: [{t:"คอยต้อนรับและดูแลผู้อื่น", s:["Wisteria", "Hydrangea"]}, {t:"เงียบๆ กับกลุ่มเพื่อนสนิท", s:["Tsubaki", "Nanohana"]}, {t:"สร้างพลังงานบวกและความสดใส", s:["Sakura", "Gerbera"]}] },
-        { q: "ถ้าเลือกของขวัญให้ตัวเองได้ 1 อย่าง?", options: [{t:"โอกาสในการเริ่มต้นสิ่งใหม่", s:["Sakura", "Gerbera"]}, {t:"ความสุขจากสิ่งเล็กๆ รอบตัว", s:["Nanohana", "Nemophila"]}, {t:"ความรักและการได้รับการยอมรับ", s:["Wisteria", "Hydrangea"]}] },
-        { q: "เวลาที่มอง 'อนาคต' คุณมักจะนึกถึงอะไร?", options: [{t:"ความสำเร็จที่รออยู่ในทุกที่", s:["Nemophila", "Gerbera"]}, {t:"การเติบโตแบบเรียบง่ายและยั่งยืน", s:["Tsubaki", "Nanohana"]}, {t:"ความหวังที่ไม่สิ้นสุด", s:["Gerbera", "Sakura"]}] },
-        { q: "หากเปรียบชีวิตเป็น 'ฤดูกาล' คุณชอบช่วงไหน?", options: [{t:"ฤดูใบไม้ผลิ: การเริ่มต้น", s:["Sakura", "Nanohana", "Wisteria"]}, {t:"ฤดูฝน: ความเย็นฉ่ำ", s:["Hydrangea"]}, {t:"ฤดูหนาว: ความสงบนิ่ง", s:["Tsubaki"]}] }
-    ];
+const questions = [
+    // --- หมวดตัวตน (Core Identity) ---
+    { q: "1. เมื่อต้องเริ่มต้นทำสิ่งใหม่ที่ไม่คุ้นเคย คุณรู้สึกอย่างไร?", options: [{t:"ตื่นเต้นและพร้อมจะผลิบาน", s:["Sakura"]}, {t:"นิ่งสงบเพื่อรอดูจังหวะที่เหมาะสม", s:["Tsubaki"]}, {t:"กังวลแต่ไม่ลดละความพยายาม", s:["Gerbera"]}] },
+    { q: "2. คุณให้ความสำคัญกับสิ่งใดในความสัมพันธ์มากที่สุด?", options: [{t:"การต้อนรับและความใจดี", s:["Wisteria"]}, {t:"การให้อภัยและความเข้าใจ", s:["Nemophila"]}, {t:"ความสดใสและพลังงานบวก", s:["Nanohana"]}] },
+    { q: "3. ในวันที่ท้องฟ้าไม่เป็นใจและทุกอย่างเปลี่ยนแปลง คุณจะ...", options: [{t:"ปรับตัวลื่นไหลไปตามสถานการณ์", s:["Hydrangea"]}, {t:"รักษาความสงบสยบความเคลื่อนไหว", s:["Tsubaki"]}, {t:"มองหาการเริ่มต้นใหม่เสมอ", s:["Sakura"]}] },
+    { q: "4. อะไรคือสิ่งที่ทำให้คุณภูมิใจในตัวเองที่สุด?", options: [{t:"ความใจดีที่มอบให้คนรอบข้าง", s:["Wisteria"]}, {t:"ความสุขเล็กๆ ที่สร้างได้เอง", s:["Nanohana"]}, {t:"ความมุ่งมั่นที่ไม่เคยยอมแพ้", s:["Gerbera"]}] },
 
+    // --- หมวดอารมณ์และสังคม (Emotion & Social) ---
+    { q: "5. เมื่อเห็นเพื่อนกำลังเศร้า คุณจะเข้าไปหาเขาแบบไหน?", options: [{t:"ปลอบโยนด้วยความละเอียดอ่อน", s:["Nemophila"]}, {t:"รับฟังอย่างกลมกลืนและเข้าใจ", s:["Hydrangea"]}, {t:"ชวนทำกิจกรรมสนุกๆ ให้ลืมความเศร้า", s:["Nanohana"]}] },
+    { q: "6. คุณรับมือกับความผิดพลาดของตัวเองอย่างไร?", options: [{t:"ให้อภัยตัวเองและเรียนรู้", s:["Nemophila"]}, {t:"ก้าวต่อไปโดยไม่หันหลังกลับ", s:["Gerbera"]}, {t:"ยอมรับความไม่แน่นอนของชีวิต", s:["Hydrangea"]}] },
+    { q: "7. บรรยากาศแบบไหนที่ทำให้คุณรู้สึกสบายใจที่สุด?", options: [{t:"ความเรียบง่ายที่สมบูรณ์แบบ", s:["Tsubaki"]}, {t:"การต้อนรับที่แสนอบอุ่น", s:["Wisteria"]}, {t:"ความละมุนละไมของการเริ่มต้น", s:["Sakura"]}] },
+
+    // --- หมวดแรงจูงใจ (Motivation) ---
+    { q: "8. คุณอยากให้คนอื่นจดจำคุณในภาพลักษณ์ใด?", options: [{t:"คนที่มีจิตวิญญาณสวยงาม", s:["Sakura"]}, {t:"คนที่มีความมั่งคั่งทางจิตใจ", s:["Nanohana"]}, {t:"คนที่เป็นที่พักพิงให้ผู้อื่น", s:["Wisteria"]}] },
+    { q: "9. เมื่อมีความขัดแย้งในกลุ่ม คุณมักจะเป็นคน...", options: [{t:"คอยประสานความกลมกลืน", s:["Hydrangea"]}, {t:"ใช้ความสงบสยบความวุ่นวาย", s:["Tsubaki"]}, {t:"ใช้ความใจดีแก้ไขปัญหา", s:["Wisteria"]}] },
+    { q: "10. พลังใจที่ทำให้คุณไม่ยอมแพ้คือสิ่งใด?", options: [{t:"ความหวังที่สดใสในวันพรุ่งนี้", s:["Gerbera"]}, {t:"ความสำเร็จที่รออยู่ในทุกที่", s:["Nemophila"]}, {t:"ความร่าเริงที่มีอยู่ในตัวเสมอ", s:["Nanohana"]}] },
+
+    // --- หมวดเป้าหมาย (Goals) ---
+    { q: "11. หากต้องเลือกทางเดินชีวิต คุณจะเลือกทางที่...", options: [{t:"เต็มไปด้วยการผจญภัยใหม่ๆ", s:["Sakura"]}, {t:"มีความสงบและมั่นคง", s:["Tsubaki"]}, {t:"สามารถปรับเปลี่ยนได้ตามใจ", s:["Hydrangea"]}] },
+    { q: "12. สิ่งที่ทำให้คุณรู้สึกว่าตัวเองมีคุณค่าคือการได้...", options: [{t:"เป็นแรงบันดาลใจให้ผู้อื่น", s:["Gerbera"]}, {t:"เป็นผู้ที่รู้จักการให้อภัย", s:["Nemophila"]}, {t:"เป็นที่รักของคนรอบข้าง", s:["Wisteria"]}] },
+    { q: "13. ความสุขที่เรียบง่ายที่สุดของคุณคือ?", options: [{t:"การได้เห็นผลผลิตที่งอกงาม", s:["Nanohana"]}, {t:"การได้อยู่ท่ามกลางธรรมชาติ", s:["Nemophila"]}, {t:"การได้ทำสิ่งที่รักอย่างตั้งใจ", s:["Gerbera"]}] },
+    { q: "14. คำนิยามของชีวิตที่ลงตัวสำหรับคุณคืออะไร?", options: [{t:"การผลิบานอย่างสง่างาม", s:["Sakura"]}, {t:"ความกลมกลืนที่ลงตัว", s:["Hydrangea"]}, {t:"ความเรียบง่ายที่ไร้ที่ติ", s:["Tsubaki"]}] }
+];
     let currentStep = 0;
     let scores = { Sakura:0, Wisteria:0, Nemophila:0, Nanohana:0, Hydrangea:0, Gerbera:0, Tsubaki:0 };
 
@@ -233,16 +225,25 @@
     }
 
     function showResult() {
-        document.getElementById('question-page').classList.add('hidden');
-        document.getElementById('result-page').classList.remove('hidden');
-        const topFlower = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
-        const res = flowers[topFlower];
-        document.getElementById('flower-name').innerText = res.name;
-        document.getElementById('flower-meaning').innerText = res.meaning;
-        document.getElementById('flower-note').innerText = res.note;
-        document.getElementById('flower-img').src = res.img;
-        document.getElementById('flower-video').href = res.video;
-    }
+    document.getElementById('question-page').classList.add('hidden');
+    document.getElementById('result-page').classList.remove('hidden');
+
+    // 1. หาคะแนนสูงสุด
+    const maxScore = Math.max(...Object.values(scores));
+    
+    // 2. ดึงรายชื่อดอกไม้ที่มีคะแนนเท่ากับคะแนนสูงสุด (เพื่อเช็กกรณี Tie)
+    const topFlowers = Object.keys(scores).filter(key => scores[key] === maxScore);
+    
+    // 3. ระบบ Tie-breaker: ถ้ามีมากกว่า 1 ให้สุ่มจากกลุ่มที่ได้คะแนนสูงสุดนั้น
+    const winnerKey = topFlowers[Math.floor(Math.random() * topFlowers.length)];
+    
+    const res = flowers[winnerKey];
+    document.getElementById('flower-name').innerText = res.name;
+    document.getElementById('flower-meaning').innerText = res.meaning;
+    document.getElementById('flower-note').innerText = res.note;
+    document.getElementById('flower-img').src = res.img;
+    document.getElementById('flower-video').href = res.video;
+}
 </script>
 
 </body>
