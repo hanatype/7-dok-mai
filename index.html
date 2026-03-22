@@ -122,7 +122,7 @@
             padding: 20px; 
             border-radius: 15px; 
             margin: 20px 0; 
-            font-size: 14px;
+            font-size: 18px;
         }
 	/* เพิ่มส่วนนี้เข้าไปเพื่อเจาะจงขนาดตัวอักษรในย่อหน้า */
         .result-info p {
@@ -178,12 +178,12 @@
 
 <script>
     const flowers = {
-        Sakura: { name: "ดอกซากุระ (Sakura)", meaning: "ความงามของจิตวิญญาณ การเริ่มต้นใหม่", note: "เป็นดอกไม้ประจำชาติญี่ปุ่น ชื่อมาจากเทพธิดาซากุยะ และยังปรากฏบนธนบัตร 1,000 เยนกับเหรียญ 100 เยนด้วย", img: "sakura.png", video: "https://www.youtube.com/watch?v=halmrlPLJj0" },
+        Sakura: { name: "ซากุระ (Sakura)", meaning: "ความงามของจิตวิญญาณ การเริ่มต้นใหม่", note: "เป็นดอกไม้ประจำชาติญี่ปุ่น ชื่อมาจากเทพธิดาซากุยะ และยังปรากฏบนธนบัตร 1,000 เยนกับเหรียญ 100 เยน ด้วย", img: "sakura.png", video: "https://www.youtube.com/watch?v=halmrlPLJj0" },
         Wisteria: { name: "วิสทีเรีย (Wisteria / Fuji)", meaning: "เมามายในความรักของคุณ ใจดี และการต้อนรับ", note: "ปรากฎอยู่ในตำนานเก่าแก่ของญี่ปุ่นอย่าง 'ตำนานเก็นจิ' และเป็นดอกไม้ที่ใช้ขับไล่อสูรในเรื่องดาบพิฆาตอสูร", img: "fuji.png", video: "https://www.youtube.com/shorts/ny7mo7mBkMU" },
-        Nemophila: { name: "เนโมฟีล่า (Nemophila)", meaning: "ประสบความสำเร็จในทุกที่ ความละเอียดอ่อน และการให้อภัย", note: "สัญลักษณ์ของการไม่ยึดติดกับความงาม และเป็นดอกไม้ประจำตัวของผู้กล้าฮิมเมลจากเรื่อง Sousou no Frieren", img: "nemophila.png", video: "https://www.youtube.com/watch?v=nROfBlb4PIY" },
+        Nemophila: { name: "เนโมฟีล่า (Nemophila)", meaning: "ประสบความสำเร็จในทุกที่ ความละเอียดอ่อน และการให้อภัย และยังเป็นสัญลักษณ์ของการไม่ยึดติดกับความงาม", note: "เป็นดอกไม้ประจำตัวของผู้กล้าฮิมเมลจากเรื่อง Sousou no Frieren", img: "nemophila.png", video: "https://www.youtube.com/watch?v=nROfBlb4PIY" },
         Nanohana: { name: "นาโนะฮานะ (Nanohana)", meaning: "ความสุขเล็ก ๆ ความมีชีวิตชีวา และความมั่งคั่ง", note: "ชื่อมีความหมายตรงตัวว่า 'ดอกไม้ผัก' เพราะนิยมนำไปประกอบอาหารหรือทำน้ำมัน", img: "nanohana.png", video: "https://www.youtube.com/watch?v=A5USx5a2wio" },
-        Hydrangea: { name: "ไฮเดรนเยีย (Hydrangea / Ajisai)", meaning: "ความกลมกลืน ความไม่แน่นอน และความไม่เที่ยงแท้", note: "สีของดอกเปลี่ยนตามสภาพดิน สีน้ำเงินหมายถึงการขอโทษ แต่ต้องระวังเพราะมีพิษทั้งต้น", img: "ajisai.png", video: "https://www.youtube.com/shorts/P0JEqNPEut4" },
-        Gerbera: { name: "เยอบีร่า (Gerbera)", meaning: "ก้าวไปข้างหน้าอยู่เสมอ และความหวัง", note: "ก้านดอกจะเติบโตโดยเงยหน้าขึ้นเสมอ เป็นดอกไม้ที่เด็นจิมอบให้เรเซ่ใน Chainsaw Man", img: "gerbera.png", video: "https://www.youtube.com/watch?v=ST6TwpFHl-Q" },
+        Hydrangea: { name: "ไฮเดรนเยีย (Hydrangea / Ajisai)", meaning: "ความกลมกลืน ความไม่แน่นอน และความไม่เที่ยงแท้", note: "สีของดอกเปลี่ยนตามสภาพดิน ผู้คนมักนำดอกไฮเดรนเยียมอบเป็นของขวัญในเทศกาลต่าง ๆ  แต่ต้องระวังเพราะมีพิษทั้งต้น", img: "ajisai.png", video: "https://www.youtube.com/shorts/P0JEqNPEut4" },
+        Gerbera: { name: "เยอบีร่า (Gerbera)", meaning: "ก้าวไปข้างหน้าอยู่เสมอ และความหวัง", note: "ก้านดอกจะเติบโตโดยเงยหน้าขึ้นเสมอ และเป็นดอกไม้ที่เด็นจิมอบให้เรเซ่ใน Chainsaw Man", img: "gerbera.png", video: "https://www.youtube.com/watch?v=ST6TwpFHl-Q" },
         Tsubaki: { name: "สึบากิ (Camellia)", meaning: "ความงดงามที่เรียบง่าย และความสมบูรณ์แบบ", note: "ปรากฏในวรรณกรรมญี่ปุ่นมานานกว่าพันปี ปัจจุบันเป็นส่วนประกอบยอดนิยมในเครื่องสำอางญี่ปุ่น", img: "tsubaki.png", video: "https://www.youtube.com/watch?v=g1p58FSvsRY" }
     };
 
